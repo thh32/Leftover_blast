@@ -40,11 +40,12 @@ todo = False
 for read in HTSeq.FastaReader(fastafile):
     if todo == False:
         if read.name == last:
+            todo == True
             outputting.write('>' + read.name + '\n')
             outputting.write(read.seq + '\n')
         else:
             continue
-    else:
+    elif todo == True:
         outputting.write('>' + read.name + '\n')
         outputting.write(read.seq + '\n')
 
